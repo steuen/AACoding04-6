@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +17,7 @@ body{
 .correct{
   background:green;
 }
-
-.incorrect{
-  background:red;
-}
+.incorrect
 {
   background:red;
 }l
@@ -29,22 +27,25 @@ body{
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <audio id="sad" controls>
-<source src="snd/DeathSound.mp3" type="audio/mpeg">
+<source src="https://steuen.github.io/AACoding04-6/snd/DeathSound.mp3" type="audio/mpeg">
 Your browser does not support the audio tag
 </audio>
 <h1>Steven's Awesome Math Problems</h1>
-<div>Timer: <span id="theTime">0</span> Score: <span id="score">0</span></div>
+<div>Timer: <span id="theTime">0</span> Score: <span id="score">0</span> Error: <span id="error">0</span></div>
 <ol>
 <li>\( 2^3 \) <input data-correct="8" /> </li>
 <li>\( \sqrt[3]{8} \) <input data-correct="2" /></li>
 <li>\( 8^\frac{1}{3} \) <input data-correct="2" /></li>
-<li>\( 4^3 \) <input data-correct="64" /></li>
+<li>\( (\frac{-125}{27}^\tfrac{-2}{3}) \) <input data-correct="9/25" /></li>
 <li>\( 4^2 \) <input data-correct="16" /></li>
 <li>\( 24*2 \) <input data-correct="48" /></li>
 <li>\( 3^4 \) <input data-correct="81" /></li>
-<li>\( 91-3 \) <input data-correct="88" /></li>
+<li>\( \sqrt[]{36} \) <input data-correct="6" /></li>
 <li>\( 4*9 \) <input data-correct="36" /></li>
 <li>\( (\frac{-125}{27})^\tfrac{-2}{3} \) <input data-correct="9/25" /></li>
+<div id="myProgress">
+<div id="myBar"></div>
+</div>
 </ol>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 <script id="rendered-js">
@@ -73,10 +74,15 @@ function onChange(evt) {
   } else {
     if (Math.random() > 0.1) {
       sad.play();
+     
     }
     $(this)
       .removeClass("correct")
       .addClass("incorrect");
+    let error = Number($("#error").text());
+    error = error + 1;
+    $("#error").text(error);
+    
   }
 }
     </script>
